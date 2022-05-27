@@ -31,7 +31,7 @@ print("3.) Population Estimates")
 choice = input("\nWhich option would you like to choose?\nEnter your choices separated by spaces:\n")
 
 if (choice == '1'):
-    probablities()
+    probabilities()
 elif (choice == '2'):
     statistics()
 elif (choice == '3'):
