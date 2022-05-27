@@ -79,6 +79,4 @@ def getPercentile(values, cutoff):
         if (x < cutoff):
             num_values = num_values + 1.0
         else:
-            break
-
-    return (num_values/len(values))*100
+            return (num_values/len(values))*100
