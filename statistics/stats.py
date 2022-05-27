@@ -1,6 +1,5 @@
 import math
 
-
 # expects a list of values and returns the sample standard deviation
 def getSampleSD(values):
     # formula for sample SD is:
@@ -53,3 +52,33 @@ def getMedian(values):
         n1 = values[(length-1)/2]
         n2 = values[(length+1)/2]
         return (n1+n2)/2
+
+# expects a list of values and a cutoff index then returns
+# the interpolated value at values[cutoff]
+# used for percentiles
+def interpolate(values, cutoff):
+    floor = float(math.floor(cutoff))
+    ceil = float(math.ceiling(cutoff))
+
+    #calculate weighted average
+    return (floor * (cutoff - floor) + (ceil * (ceil - cutoff)) / 2
+
+# expects a list of values and percentile value and returns
+# the cutoff value for that percentile
+def getPercentileCutoff(values, p):
+    values.sort()
+    cutoff = float(p*len(values)/100) # number of values in pth percentile
+    return interpolate(values, cutoff)
+
+# expects a list of values and a cutoff value then returns
+# the percentile that cutoff value is
+def getPercentile(values, cutoff):
+    values.sort()
+    num_values = 0.0
+    for x in values:
+        if (x < cutoff):
+            num_values = num_values + 1.0
+        else:
+            break
+
+    return (num_values/len(values))*100
