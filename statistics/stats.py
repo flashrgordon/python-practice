@@ -1,3 +1,4 @@
+
 import math
 
 # expects a list of values and returns the sample standard deviation
@@ -61,7 +62,7 @@ def interpolate(values, cutoff):
     ceil = float(math.ceiling(cutoff))
 
     #calculate weighted average
-    return (floor * (cutoff - floor) + (ceil * (ceil - cutoff)) / 2
+    return (floor * (cutoff - floor) + (ceil * (ceil - cutoff))) / 2
 
 # expects a list of values and percentile value and returns
 # the cutoff value for that percentile

@@ -1,25 +1,49 @@
 import time
+import stats
 
 def getValues():
     val_input = input("Enter the sample values separated by spaces:\n")
-    values = map(int, (val_input.split()))
-    return values
+    values = val_input.split()
+    return [float(i) for i in values]
 
 
-def probabilities():
+def statistics():
     values = getValues()
+    print(stats.getSampleMean(values))
     print("Choose from the following calculations. You can choose multiple options separated by spaces:")
     print("1.) Sample Mean")
     print("2.) Sample Standard Deviation")
     print("3.) Sample Variance")
     print("4.) Sample Median")
     print("5.) Percentile Cutoff Value")
-    print("6.) Percentiles")
+    print("6.) Percentile")
 
     choices = input().split()
+    print_string = ""
+    print(values)
+    if ('5' in choices):
+        p = input("Enter the desired percentile cutoff: ")
+    if ('6' in choices):
+        cutoff = input("Enter a value to determine its percentile: ")
 
+    for x in choices:
+        if (x == 1):
+            print_string = (print_string + "Sample Mean: " + stats.getSampleMean(values) + "\n")
+        elif (x == 2):
+            print_string = (print_string + "Sample SD " + stats.getSampleSD(values) + "\n")
+        elif (x == 3):
+            print_string = (print_string + "Sample Variance: " + stats.getSampleVariance(values) + "\n")
+        elif (x == 4):
+            print_string = (print_string + "Sample Median: " + stats.getSampleSD(values) + "\n")
+        elif (x == 5):
+            print_string = (print_string + "Cutoff for " + p + " percentile: " + stats.getPercentileCutoff(values,p) + "\n")
+        elif (x == 6):
+            print_string = (print_string + "Percentile for " + cutoff + "cutoff value: " + stats.getPercentile(values, cutoff) + "\n")
 
-time.sleep(1)
+    print("Results:\n" + print_string)
+    time.sleep(2)
+
+time.sleep(.5)
 print("Welcome to the CLI interface for the automated statistics calculator.")
 
 print("You can choose from the following options: ")
