@@ -1,6 +1,8 @@
 
 import math
 
+### SAMPLE STATISTICS FORMULAS ###
+
 # expects a list of values and returns the sample standard deviation
 def getSampleSD(values):
     # formula for sample SD is:
@@ -81,3 +83,27 @@ def getPercentile(values, cutoff):
             num_values = num_values + 1.0
         else:
             return (num_values/len(values))*100
+
+
+### POPULATION INFERENCE FORMULAS ###
+
+# expects a list of sample data values and the alpha error value then returns the
+# margin of error as a string of an inclusive range in interval notation
+def getMeanConfidenceInterval(values, alpha)
+    sample_mean = getSampleMean(values)
+    sample_SD = getSampleSD(values)
+    z_score = 0
+
+    # These values are constants from a standard normal distribution table
+    if (alpha == .99):
+        z_score = 2.57583
+    elif (alpha == .95):
+        z_score = 1.95996
+    elif (alpha == .90):
+        z_score = 1.64485
+
+    margin_of_error = ((z_score * sample_SD) / math.sqrt(len(values))
+    min = sample_mean - margin_of_error
+    max = sample_mean + margin_of_error
+
+    return ("(" + min + ", " + max + ")")
