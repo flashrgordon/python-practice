@@ -6,7 +6,12 @@ def getValues():
     values = val_input.split()
     return [float(i) for i in values]
 
+# option 1
+def probabilities():
+    print("TODO")
 
+
+# option 2
 def statistics():
     values = getValues()
     print(stats.getSampleMean(values))
@@ -43,13 +48,24 @@ def statistics():
     print("Results:\n" + print_string)
     time.sleep(2)
 
+# option 3
+def onePopulation():
+    values = getValues()
+
+
+def multiPopulation():
+    print("TODO")
+
+
 time.sleep(.5)
 print("Welcome to the CLI interface for the automated statistics calculator.")
 
 print("You can choose from the following options: ")
 print("1.) Probabilities")
 print("2.) Sample Statistics")
-print("3.) Population Estimates")
+print("3.) Single Population Estimates")
+print("4.) Multiple Population Estimates")
+
 
 # choice = (input("\nWhich option would you like to choose?\nEnter your choices separated by spaces:\n")).split()
 choice = input("\nWhich option would you like to choose?\nEnter your choices separated by spaces:\n")
@@ -59,6 +75,8 @@ if (choice == '1'):
 elif (choice == '2'):
     statistics()
 elif (choice == '3'):
-    population()
+    onePopulation()
+elif (choice == '4'):
+    multiPopulation()
 else:
     print("Invalid option. Exiting now.")
